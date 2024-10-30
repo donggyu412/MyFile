@@ -1,4 +1,4 @@
-package com.example.checkid
+package com.example.checkid.View
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
