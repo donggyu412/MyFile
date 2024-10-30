@@ -1,4 +1,4 @@
-package com.example.checkid.View
+package com.example.checkid.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -46,4 +46,3 @@ fun GreetingPreview() {
     }
 }
 
-// 성공
