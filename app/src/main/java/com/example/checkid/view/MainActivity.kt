@@ -1,9 +1,7 @@
 package com.example.checkid.view
 
-import android.app.Activity
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,9 +20,8 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
             val fragment = NotificationFragment()
-            supportFragmentManager.beginTransaction()  // Activity() 대신 this 사용
+            supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
                 .commit()
         }
     }

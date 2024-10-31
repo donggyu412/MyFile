@@ -26,14 +26,11 @@ class NotificationFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNotificationBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_notification, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // RecyclerView 설정
         binding.recNotify.layoutManager = LinearLayoutManager(context)
         binding.recNotify.adapter = NotificationAdapter(NotificationRepository.notifications)
+
+        return binding.root
     }
 }
 
