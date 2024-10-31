@@ -47,6 +47,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    //
+    viewBinding  {
+        enable = true
+    }
 }
 
 dependencies {
@@ -62,6 +67,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.coordinatorlayout)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,4 +79,7 @@ dependencies {
     // Fragment 관련 dependency
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.fragment.ktx)
+
+    // BottomAppBar 관련 dependency
+    implementation(libs.androidx.material3)
 }
