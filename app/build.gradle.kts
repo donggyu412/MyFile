@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.androidx.coordinatorlayout)
     implementation(libs.material)
     implementation(libs.androidx.appcompat)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
