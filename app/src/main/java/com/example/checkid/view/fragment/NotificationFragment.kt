@@ -11,6 +11,7 @@ import com.example.checkid.databinding.FragmentNotificationBinding
 import com.example.checkid.databinding.ListNotificationBinding
 import com.example.checkid.model.Notification
 import com.example.checkid.model.NotificationRepository.notifications
+import com.example.checkid.model.NotificationType
 
 class NotificationFragment() : Fragment() {
     private var _binding : FragmentNotificationBinding? = null
@@ -45,6 +46,14 @@ class NotificationAdapter(private val notifications: List<Notification>) :
 
     class ViewHolder(private val binding: ListNotificationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(notification: Notification) {
+            /*
+            when (notification.notificationType) {
+                Notification.REPORT -> binding.iconNotificationType.setImageResource(R.drawable.ic_report)
+                Notification.WARNING -> binding.iconNotificationType.setImageResource(R.drawable.ic_warning)
+                else -> binding.iconNotificationType.setImageResource(R.drawable.ic_)
+            }
+            */
+
             binding.txtNotificationTitle.text = notification.textTitle
             binding.txtNotificationContent.text = notification.textContent
         }
