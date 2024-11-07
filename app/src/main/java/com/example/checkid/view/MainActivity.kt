@@ -1,41 +1,31 @@
 package com.example.checkid.view
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
-import com.naver.maps.map.MapFragment
+import androidx.fragment.app.Fragment
 import com.example.checkid.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.checkid.databinding.ActivityMainBinding
+import com.example.checkid.view.fragment.EmptyFragment
+import com.example.checkid.view.fragment.NotificationFragment
+import com.naver.maps.map.MapFragment
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // activity_main.xml 레이아웃을 설정
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        // 버튼 클릭 이벤트 설정
-        val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener {
-            showMap()
-        }
+        val view = binding.root
+        setContentView(view)
+        replaceFragment(EmptyFragment())
 
-        // BottomNavigationView 설정
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
-        bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_record -> {
-                    // Record 페이지 로직
-                    true
-                }
-                R.id.menu_home -> {
-                    // Home 페이지 로직
-                    true
-                }
-                R.id.menu_statistics -> {
-                    // Statistics 페이지 로직
-                    true
-                }
+        binding.bottomNavigationMenu.setOnItemSelectedListener {
+            item -> when (item.itemId) {
+                R.id.page_home -> replaceFragment(EmptyFragment())
+                R.id.page_statistics -> replaceFragment(EmptyFragment())
+                R.id.page_notification -> replaceFragment(NotificationFragment())
+                R.id.page_setting -> replaceFragment(EmptyFragment())
                 else -> false
             }
         }
@@ -57,5 +47,13 @@ class MainActivity : AppCompatActivity() {
         mapFragment.getMapAsync { naverMap ->
             // 필요 시 지도 설정 코드
         }
+
+    private fun replaceFragment(fragment: Fragment) : Boolean {
+        supportFragmentManager.beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.activity_main_FragmentContainerView, fragment)
+            .commit()
+
+        return true
     }
 }
