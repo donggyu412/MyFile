@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.checkid"
+    namespace = "com.example.myapplication"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.checkid"
+        applicationId = "com.example.myapplication"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -47,14 +47,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
-    //
-    viewBinding  {
-        enable = true
-    }
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -62,14 +58,7 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.runtime.saved.instance.state)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.recyclerview)
-    implementation(libs.androidx.coordinatorlayout)
-    implementation(libs.material)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.firebase.firestore.ktx)
-
+    implementation(libs.androidx.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -77,32 +66,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // Fragment 관련 dependency
-    implementation(libs.androidx.fragment)
-    implementation(libs.androidx.fragment.ktx)
-
-    // BottomAppBar 관련 dependency
-    implementation(libs.androidx.material3)
-
-    //지도sdk 의존성
-    implementation(libs.naver.maps)
-
 }
-
-// build.gradle.kts (프로젝트 레벨)
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        // Naver Maven 저장소 추가
-        maven {
-            url = uri("https://naver.jfrog.io/artifactory/maven/")
-        }
-    }
-    // ...
-}
-
-
-
