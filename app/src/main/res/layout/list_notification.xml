@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/image_notification"
+        android:id="@+id/icon_notification_type"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
@@ -25,7 +25,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/Notification_title"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/image_notification"
+        app:layout_constraintStart_toEndOf="@+id/icon_notification_type"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -36,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toEndOf="@+id/image_notification"
+        app:layout_constraintStart_toEndOf="@+id/icon_notification_type"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.508" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

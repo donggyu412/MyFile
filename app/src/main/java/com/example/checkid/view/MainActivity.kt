@@ -1,65 +1,44 @@
 package com.example.checkid.view
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.fragment.app.Fragment
 import com.example.checkid.R
-import com.example.checkid.ui.theme.CheckidTheme
+import com.example.checkid.databinding.ActivityMainBinding
+import com.example.checkid.view.fragment.EmptyFragment
 import com.example.checkid.view.fragment.NotificationFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener {
-            val fragment = NotificationFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit()
-        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
+        val view = binding.root
+        setContentView(view)
+        replaceFragment(EmptyFragment())
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
-        bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_record -> {
-                    // 기록 화면으로 이동
-                    true
-                }
-                R.id.menu_home -> {
-                    // 홈 화면으로 이동
-                    true
-                }
-                R.id.menu_statistics Compare & Pull request-> {
-                    // 통계 화면으로 이동
-                    true
-                }
+        binding.bottomNavigationMenu.setOnItemSelectedListener {
+            item -> when (item.itemId) {
+                R.id.page_home -> replaceFragment(EmptyFragment())
+                R.id.page_statistics -> replaceFragment(EmptyFragment())
+                R.id.page_notification -> replaceFragment(NotificationFragment())
+                R.id.page_setting -> replaceFragment(EmptyFragment())
+
                 else -> false
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun replaceFragment(fragment: Fragment) : Boolean {
+        supportFragmentManager.beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.activity_main_FragmentContainerView, fragment)
+            .commit()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CheckidTheme {
-        Greeting("Android")
+        return true
     }
 }
