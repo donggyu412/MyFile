@@ -7,14 +7,13 @@ import com.example.checkid.R
 import com.example.checkid.databinding.ActivityMainBinding
 import com.example.checkid.view.fragment.EmptyFragment
 import com.example.checkid.view.fragment.NotificationFragment
-
+import com.naver.maps.map.MapFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         val view = binding.root
@@ -27,11 +26,27 @@ class MainActivity : AppCompatActivity() {
                 R.id.page_statistics -> replaceFragment(EmptyFragment())
                 R.id.page_notification -> replaceFragment(NotificationFragment())
                 R.id.page_setting -> replaceFragment(EmptyFragment())
-
                 else -> false
             }
         }
     }
+
+    private fun showMap() {
+        val fragmentManager: FragmentManager = supportFragmentManager
+        var mapFragment = fragmentManager.findFragmentById(R.id.map_fragment) as? MapFragment
+
+        if (mapFragment == null) {
+            mapFragment = MapFragment.newInstance()
+            fragmentManager.beginTransaction()
+                .replace(R.id. mapFragment)
+                .commit()
+        }
+
+        findViewById<View>(R.id.map_fragment).visibility = View.VISIBLE
+
+        mapFragment.getMapAsync { naverMap ->
+            // 필요 시 지도 설정 코드
+        }
 
     private fun replaceFragment(fragment: Fragment) : Boolean {
         supportFragmentManager.beginTransaction()
