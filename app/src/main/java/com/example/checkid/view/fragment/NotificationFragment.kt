@@ -1,5 +1,6 @@
 package com.example.checkid.view.fragment
 
+import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import com.example.checkid.model.Notification
 import com.example.checkid.model.NotificationRepository
 import com.example.checkid.model.NotificationType
 
-class NotificationFragment() : Fragment() {
+class NotificationFragment() : androidx.fragment.app.Fragment() {
     lateinit var binding : FragmentNotificationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

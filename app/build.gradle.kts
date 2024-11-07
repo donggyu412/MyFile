@@ -82,4 +82,25 @@ dependencies {
 
     // BottomAppBar 관련 dependency
     implementation(libs.androidx.material3)
+
+    //지도sdk 의존성
+    implementation("com.naver.maps:map-sdk:3.19.1")
+
 }
+
+// build.gradle.kts (프로젝트 레벨)
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        // Naver Maven 저장소 추가
+        maven {
+            url = uri("https://naver.jfrog.io/artifactory/maven/")
+        }
+    }
+    // ...
+}
+
+
+

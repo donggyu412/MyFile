@@ -3,63 +3,59 @@ package com.example.checkid.view
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.fragment.app.FragmentManager
+import com.naver.maps.map.MapFragment
 import com.example.checkid.R
-import com.example.checkid.ui.theme.CheckidTheme
-import com.example.checkid.view.fragment.NotificationFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // activity_main.xml 레이아웃을 설정
         setContentView(R.layout.activity_main)
 
+        // 버튼 클릭 이벤트 설정
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
-            val fragment = NotificationFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit()
+            showMap()
         }
 
-
+        // BottomNavigationView 설정
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_record -> {
-                    // 기록 화면으로 이동
+                    // Record 페이지 로직
                     true
                 }
                 R.id.menu_home -> {
-                    // 홈 화면으로 이동
+                    // Home 페이지 로직
                     true
                 }
-                R.id.menu_statistics Compare & Pull request-> {
-                    // 통계 화면으로 이동
+                R.id.menu_statistics -> {
+                    // Statistics 페이지 로직
                     true
                 }
                 else -> false
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun showMap() {
+        val fragmentManager: FragmentManager = supportFragmentManager
+        var mapFragment = fragmentManager.findFragmentById(R.id.map_fragment) as? MapFragment
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CheckidTheme {
-        Greeting("Android")
+        if (mapFragment == null) {
+            mapFragment = MapFragment.newInstance()
+            fragmentManager.beginTransaction()
+                .replace(R.id. mapFragment)
+                .commit()
+        }
+
+        findViewById<View>(R.id.map_fragment).visibility = View.VISIBLE
+
+        mapFragment.getMapAsync { naverMap ->
+            // 필요 시 지도 설정 코드
+        }
     }
 }
