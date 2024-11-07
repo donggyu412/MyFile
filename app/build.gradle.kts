@@ -85,7 +85,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     //지도sdk 의존성
-    implementation("com.naver.maps:map-sdk:3.19.1")
+    implementation(libs.naver.maps)
 
 }
 

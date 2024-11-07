@@ -31,6 +31,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun replaceFragment(fragment: Fragment) : Boolean {
+        supportFragmentManager.beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.activity_main_FragmentContainerView, fragment)
+            .commit()
+
+        return true
+    }
+
+    /*
     private fun showMap() {
         val fragmentManager: FragmentManager = supportFragmentManager
         var mapFragment = fragmentManager.findFragmentById(R.id.map_fragment) as? MapFragment
@@ -48,12 +58,5 @@ class MainActivity : AppCompatActivity() {
             // 필요 시 지도 설정 코드
         }
 
-    private fun replaceFragment(fragment: Fragment) : Boolean {
-        supportFragmentManager.beginTransaction()
-            .setReorderingAllowed(true)
-            .replace(R.id.activity_main_FragmentContainerView, fragment)
-            .commit()
-
-        return true
-    }
+     */
 }
