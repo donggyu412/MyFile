@@ -18,7 +18,7 @@
         <!-- 구글 지도 api키 -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC8sVQAsyI21441JiupKCvs0ES24e9eP6c"/>
+            android:value="AIzaSyAOb64TYzRln7IjGkIVQoWbUADYQCPfJk8"/>
 
 
         <activity

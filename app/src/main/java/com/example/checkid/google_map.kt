@@ -31,7 +31,7 @@ class google_map : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val initialLocation = LatLng(-34.0, 151.0) // 초기 위치 설정 (예: 시드니)
+        val initialLocation = LatLng(37.413294, 127.0016985)
         mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 10f))
     }
 }

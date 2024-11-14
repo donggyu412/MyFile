@@ -38,11 +38,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 구글 지도가 작동하는지 확인하는 버튼 activity_main에 설정 나중에 변경 -->
     <Button
         android:id="@+id/openMapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open Map"
+        android:text="Open google Map"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
